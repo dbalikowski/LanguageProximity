@@ -1,0 +1,60 @@
+Chleb
+Masło
+Ser
+Mleko
+Jogurt
+Jajka
+Mięso
+Ryba
+Kurczak
+Wołowina
+Wieprzowina
+Warzywa
+Owoce
+Ziemniaki
+Ryż
+Makaron
+Kasza
+Sałatka
+Zupa
+Gulasz
+Sernik
+Ciasto
+Babeczki
+Lody
+Kawa
+Herbata
+Sok
+Woda
+Cukier
+Sól
+Pieprz
+Przyprawy
+Miód
+Dżem
+Musli
+Naleśniki
+Pancakes
+Tosty
+Pizza
+Burgery
+Frytki
+Kopytka
+Pierogi
+Smażone ryby
+Grillowane mięso
+Sushi
+Tofu
+Krewetki
+Zupa pomidorowa
+Zupa ogórkowa
+Barszcz
+Pstrąg
+Łosoś
+Wołowina po burgundzku
+Kaczka
+Jagnięcina
+Risotto
+Paella
+Lasagna
+Quiche

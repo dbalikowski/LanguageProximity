@@ -1,0 +1,30 @@
+Samochód
+Motocykl
+Rower
+Skuter
+Autobus
+Tramwaj
+Trolejbus
+Ciężarówka
+Van
+Limuzyna
+Quady
+Łódź
+Jacht
+Statek
+Helikopter
+Samolot
+Balon
+Pociąg
+Metro
+Wózek dziecięcy
+Sanki
+Rolki
+Hulajnoga
+Pojazd terenowy (SUV)
+Cysterny
+Furgonetka
+Opony
+Skuter wodny
+Szybowiec
+Latawiec

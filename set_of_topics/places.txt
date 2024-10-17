@@ -1,0 +1,40 @@
+Szkoła
+Uniwersytet
+Przedszkole
+Szpital
+Biblioteka
+Muzeum
+Teatr
+Kino
+Galeria
+Centrum handlowe
+Sklep
+Restauracja
+Kawiarnia
+Bar
+Hotel
+Pensjonat
+Stacja kolejowa
+Lotnisko
+Dworzec autobusowy
+Garaż
+Kościół
+Świątynia
+Cmentarz
+Stadion
+Basen
+Hala sportowa
+Park
+Ogród zoologiczny
+Ogród botaniczny
+Centrum rozrywki
+Plac zabaw
+Miejsce spotkań
+Biuro
+Fabryka
+Magazyn
+Gospodarstwo
+Przystań
+Zamek
+Pałac
+Ruiny

@@ -1,0 +1,30 @@
+Krzesło
+Stół
+Fotel
+Sofa
+Kanapa
+Łóżko
+Biurko
+Komoda
+Szafa
+Regał
+Szafka nocna
+Stolik kawowy
+Witryna
+Półka
+Kredens
+Toaletka
+Ława
+Taboret
+Hoker
+Leżanka
+Pufa
+Łóżko piętrowe
+Szafka RTV
+Szafka na buty
+Konsola
+Szezlong
+Narożnik
+Biblioteczka
+Stolik nocny
+Barki

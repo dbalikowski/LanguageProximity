@@ -1,0 +1,50 @@
+Lekarz
+Nauczyciel
+Prawnik
+Inżynier
+Programista
+Księgowy
+Architekt
+Polityk
+Dziennikarz
+Artysta
+Muzyk
+Aktor
+Pielęgniarka
+Pracownik biurowy
+Sprzedawca
+Kierowca
+Mechanik
+Elektryk
+Stwórca gier
+Weterynarz
+Taksówkarz
+Fotograf
+Kucharz
+Szef kuchni
+Rzeźnik
+Tłumacz
+Kosmetyczka
+Fryzjer
+Rzeczoznawca
+Agent nieruchomości
+Menedżer
+Pracownik socjalny
+Stylista
+Grafik
+Programista front-end
+Programista back-end
+Data Scientist
+Copywriter
+Analityk danych
+Pracownik ochrony
+Przewodnik turystyczny
+Sędzia
+Psycholog
+Logopeda
+Bibliotekarz
+Badacz
+Policjant
+Strażak
+Żołnierz
+Pracownik budowlany

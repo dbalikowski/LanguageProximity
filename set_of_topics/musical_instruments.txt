@@ -1,0 +1,40 @@
+Fortepian
+Pianino
+Organy
+Gitara
+Gitara basowa
+Skrzypce
+Altówka
+Wiolonczela
+Kontrabas
+Flet
+Klarnet
+Saksofon
+Trąbka
+Pułapka (tuba)
+Puzon
+Harfa
+Akordeon
+Mandolina
+Ukulele
+Bęben
+Tamburyn
+Perkusja
+Ksylofon
+Marimba
+Djembe
+Cajón
+Lira
+Banjo
+Balalaika
+Złota kaczka (shakuhachi)
+Głos (śpiew)
+Keyboard
+Syntetyzator
+Dudy
+Didgeridoo
+Theremin
+Harmonijka ustna
+Głoski (voice)
+Flet prosty
+Trombon

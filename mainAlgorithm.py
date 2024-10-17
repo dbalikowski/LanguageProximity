@@ -1,46 +1,81 @@
-def soundex(word):
-    # Krok 1: Zachowaj pierwszą literę
-    first_letter = word[0].upper()
+import os
+from googletrans import Translator
+from Levenshtein import distance as levenshtein_distance
+from metaphone import doublemetaphone
+
+def find_word_in_files(word, folder_path):
+    found_category = None
+
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.txt'):
+            file_path = os.path.join(folder_path, filename)
+            with open(file_path, 'r', encoding='utf-8') as file:
+                for line in file:
+                    if line.strip().lower() == word.lower():
+                        found_category = filename[:-4]  # Usunięcie '.txt' z nazwy pliku
+                        break
+        if found_category:
+            break
+
+    return found_category
+
+def translate_word(word):
+    translator = Translator()
+    languages = [
+        'en', 'de', 'nl', 'cs', 'it', 'es', 'pt', 'ro', 
+        'da', 'no', 'fr', 'is'
+    ]
+    translations = {}
+
+    for lang in languages:
+        translated = translator.translate(word, dest=lang)
+        translations[lang] = translated.text
+
+    return translations
+
+def combine_levenshtein_metaphone(original_word, translations):
+    original_meta_primary, original_meta_secondary = doublemetaphone(original_word)
     
-    # Krok 2: Mapa zamieniająca litery na cyfry według zasad Soundex
-    soundex_mapping = {
-        'B': '1', 'F': '1', 'P': '1', 'V': '1',
-        'C': '2', 'G': '2', 'J': '2', 'K': '2', 'Q': '2', 'S': '2', 'X': '2', 'Z': '2',
-        'D': '3', 'T': '3',
-        'L': '4',
-        'M': '5', 'N': '5',
-        'R': '6'
-    }
+    results = []
     
-    # Krok 3: Ignorowane litery
-    vowels_and_ignored = set('AEIOUHWY')
-    
-    # Krok 4: Zamień litery na cyfry, zignoruj niepotrzebne litery
-    soundex_code = first_letter
-    previous_digit = None
-    
-    for char in word[1:].upper():
-        if char in vowels_and_ignored:
-            continue
+    for lang, translation in translations.items():
+        trans_meta_primary, trans_meta_secondary = doublemetaphone(translation)
         
-        digit = soundex_mapping.get(char, '')
+        # Obliczanie odległości Levenshteina między oryginalnym słowem a tłumaczeniem
+        lev_dist = levenshtein_distance(original_word.lower(), translation.lower())
         
-        # Nie dodawaj tej samej cyfry dwa razy pod rząd
-        if digit != previous_digit:
-            soundex_code += digit
-            previous_digit = digit
-
-    # Krok 5: Uzupełnij zerami lub skróć do czterech znaków
-    soundex_code = soundex_code[:4].ljust(4, '0')
+        # Sprawdzenie podobieństwa fonetycznego
+        meta_dist = 0
+        if original_meta_primary and trans_meta_primary:
+            meta_dist = levenshtein_distance(original_meta_primary, trans_meta_primary)
+        
+        # Kombinowanie odległości Levenshteina z fonetyką, dodajemy wagę 0.7 dla Levenshteina i 0.3 dla fonetyki
+        combined_score = 0.7 * lev_dist + 0.3 * meta_dist
+        results.append((combined_score, translation, lang))
     
-    return soundex_code
+    # Sortowanie wyników według połączonego wyniku
+    results.sort(key=lambda x: x[0])
+    
+    return results
 
-# Przykład dla dwóch słów
-word1 = "Telephone"
-word2 = "Telefono"
+def main():
+    folder_path = 'set_of_topics'
+    word = input("Podaj słowo do przeszukania: ")
 
-soundex_code1 = soundex(word1)
-soundex_code2 = soundex(word2)
+    category = find_word_in_files(word, folder_path)
+    
+    if category:
+        print(f'Znaleziono kategorię: {category}')
+        translations = translate_word(word)
 
-print(soundex_code1) 
-print(soundex_code2) 
+        # Sortowanie tłumaczeń według kombinacji Levenshteina i Metaphone
+        sorted_translations = combine_levenshtein_metaphone(word, translations)
+
+        print("Tłumaczenia (posortowane według połączonego podobieństwa Levenshteina i fonetycznego):")
+        for score, translation, lang in sorted_translations:
+            print(f'{lang}: {translation} (połączony wynik: {score})')
+    else:
+        print('Nie znaleziono słowa w żadnej kategorii.')
+
+if __name__ == "__main__":
+    main()

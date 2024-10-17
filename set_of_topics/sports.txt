@@ -1,0 +1,40 @@
+Piłka nożna
+Koszykówka
+Siatkówka
+Tenis
+Tenis stołowy
+Badminton
+Lekkoatletyka
+Pływanie
+Kolarstwo
+Boks
+Judo
+Karate
+Taekwondo
+Hokej na lodzie
+Hokej na trawie
+Rugby
+Golf
+Narciarstwo
+Snowboard
+Surfing
+Wspinaczka
+Gimnastyka
+Akrobatyka
+Skoki do wody
+Łyżwiarstwo figurowe
+Łyżwiarstwo szybkie
+Rugby
+Frisbee
+Sporty motorowe
+Żeglarstwo
+Biegi ekstremalne
+Triathlon
+Piłka ręczna
+Softball
+Baseball
+Pogoń
+Lacrosse
+Obronny
+Szermierka
+Skateboarding

@@ -1,0 +1,40 @@
+Akita
+Beagle
+Basset Hound
+Boxer
+Bullterier
+Chihuahua
+Dalmatyńczyk
+Doberman
+Dog niemiecki
+Golden Retriever
+Labrador Retriever
+Maltese
+Mastif
+Pekingese
+Pomeranian (szpic miniaturowy)
+Rottweiler
+Shih Tzu
+Siberian Husky
+Yorkshir Terrier
+Cocker Spaniel
+Sznaucer
+Whippet
+Hovawart
+Weimaraner
+Border Collie
+Mops
+Rasy szpica (np. szpic średni, szpic miniaturowy)
+Jack Russell Terrier
+Seter
+Buldog francuski
+Corgi
+Nowofundland
+Collie
+Puli
+Saluki
+Tervuren
+Wędrowny Pies Kłusak
+Basset Artesian Normand
+Borzoj
+Pudel
