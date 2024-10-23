@@ -32,18 +32,22 @@ class Database:
         }
 
     # Method to set the status of categories (active/inactive)
-    def setCategories(self, fruitsAndVegetables, animals, colors):
+    def setCategories(self, fruitsAndVegetables=0, animals=0, colors=0):
         self.categories["fruitsAndVegetables"] = fruitsAndVegetables
         self.categories["animals"] = animals
         self.categories["colors"] = colors
 
     # Method to pull content for a single category from a CSV file
     def pullSingleCategory(self, category):
-        fileName = category + ".csv"  
-        with open(fileName, mode='r', newline='', encoding='utf-8') as file:
-            reader = csv.reader(file, delimiter=';')
-            for row in reader:
-                self.content[category].append(row)
+        fileName = category + ".csv"
+        try:
+            with open(fileName, mode='r', newline='', encoding='utf-8') as file:
+                reader = csv.reader(file, delimiter=';')
+                for row in reader:
+                    self.content[category].append(row)
+        except FileNotFoundError:
+            print(f"File {fileName} not found!")
+
 
     # Method to check and pull database categories
     def pullDatabase(self):
@@ -52,9 +56,26 @@ class Database:
         except CustomError as e:
             print(e)
 
+        for key, value in self.categories.items():
+            if value:
+                self.pullSingleCategory(key)
+
     # Method to print the content of a specific category
     def printCategory(self, category):
+        print(f"<=={category}==>")
         for row in self.content[category]:
             print(row)  
+
+    # Method to print the whole db
+    def printDatabase(self):
+        for key, value in self.categories.items():
+            if value:
+                self.printCategory(key)
+
+
+db = Database()
+db.setCategories(fruitsAndVegetables=True,animals=True)
+db.pullDatabase()
+db.printDatabase()
 
 
