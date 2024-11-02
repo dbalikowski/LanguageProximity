@@ -1,81 +1,35 @@
-import csv
+from googletrans import Translator
+import Levenshtein
 
-# Define a custom exception to handle specific error cases
-class CustomError(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-# Function to check if there are any active categories
-def categoriesChecker(categories):
-    activeCounter = 0 
-    for value in categories.values():
-        if(value): 
-            activeCounter += 1
-    if(not activeCounter):
-        raise CustomError("no active categories")
-
-# Database class to manage categories and their corresponding data
 class Database:
     def __init__(self):
-        # Dictionary to track the status of categories (active or inactive)
-        self.categories = {
-            "fruitsAndVegetables": False,
-            "animals": False,
-            "colors": False
-        }
+        self.translator = Translator()
+        self.target_languages = [
+            "en", "de", "nl", "cs", "it", "es", "pt", "ro", "da", "no", "fr", "is"
+        ]
 
-        # Dictionary to store content of each category
-        self.content = {
-            "fruitsAndVegetables": [],
-            "animals": [],
-            "colors": []     
-        }
+    # Funkcja do tłumaczenia polskiego słowa na wybrane języki
+    def translate_and_compare(self, word):
+        translations = {}
+        similarities = {}
 
-    # Method to set the status of categories (active/inactive)
-    def setCategories(self, fruitsAndVegetables=0, animals=0, colors=0):
-        self.categories["fruitsAndVegetables"] = fruitsAndVegetables
-        self.categories["animals"] = animals
-        self.categories["colors"] = colors
+        # Tłumaczenie słowa na różne języki
+        for lang in self.target_languages:
+            try:
+                translated = self.translator.translate(word, dest=lang).text
+                translations[lang] = translated
+            except Exception as e:
+                translations[lang] = None
+                print(f"Error translating '{word}' to '{lang}': {e}")
 
-    # Method to pull content for a single category from a CSV file
-    def pullSingleCategory(self, category):
-        fileName = category + ".csv"
-        try:
-            with open(fileName, mode='r', newline='', encoding='utf-8') as file:
-                reader = csv.reader(file, delimiter=';')
-                for row in reader:
-                    self.content[category].append(row)
-        except FileNotFoundError:
-            print(f"File {fileName} not found!")
+        # Obliczanie podobieństwa dla każdego tłumaczenia
+        for lang, translated_word in translations.items():
+            if translated_word:
+                # Użycie funkcji Levenshtein do porównania
+                similarity = Levenshtein.ratio(word, translated_word)  # Porównanie za pomocą Levenshtein
+                similarities[translated_word] = (round(similarity * 100, 2), lang)  # Procentowe podobieństwo i język
 
+        # Sortowanie wyników od najbardziej podobnych do najmniej podobnych
+        sorted_similarities = sorted(similarities.items(), key=lambda x: x[1][0], reverse=True)
 
-    # Method to check and pull database categories
-    def pullDatabase(self):
-        try:
-            categoriesChecker(self.categories)
-        except CustomError as e:
-            print(e)
-
-        for key, value in self.categories.items():
-            if value:
-                self.pullSingleCategory(key)
-
-    # Method to print the content of a specific category
-    def printCategory(self, category):
-        print(f"<=={category}==>")
-        for row in self.content[category]:
-            print(row)  
-
-    # Method to print the whole db
-    def printDatabase(self):
-        for key, value in self.categories.items():
-            if value:
-                self.printCategory(key)
-
-
-db = Database()
-db.setCategories(fruitsAndVegetables=True,animals=True)
-db.pullDatabase()
-db.printDatabase()
-
-
+        return sorted_similarities
