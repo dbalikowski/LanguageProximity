@@ -1,0 +1,10 @@
+Similarity Results
+==================================================
+Translation: Hruška (Language: cs), Similarity: 62.50%
+Translation: Pera (Language: is), Similarity: 17.50%
+Translation: Birne (Language: de), Similarity: 7.50%
+Translation: Peer (Language: nl), Similarity: 7.50%
+Translation: Pară (Language: ro), Similarity: 7.50%
+Translation: Pear (Language: English), Similarity: 7.50%
+Translation: Poire (Language: fr), Similarity: 7.50%
+Translation: Pære (Language: no), Similarity: 0.00%
